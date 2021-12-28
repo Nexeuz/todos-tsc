@@ -34,6 +34,10 @@ export class TodoList {
         this.todos[index] = { ...this.todos[index], status}
     }
 
+    updateTodoDescription(description: string, index: number): void {
+        this.todos[index] = { ...this.todos[index], description}
+    }
+
     deleteTodo(index: number): void {
         this.todos.splice(index, 1);
     }
@@ -43,8 +47,11 @@ const todoList = new TodoList();
 console.log('------------ADD PASSIONFRUIT TODOS-------------------');
 todoList.addNewTodo('Passionfruit')
 console.log(todoList.todos);
-console.log('-------------UPDATE TOMATOES TODOS-------------------');
+console.log('-------------UPDATE TOMATOES STATE TODOS--------------');
 todoList.updateStatusTodo('completed', 1)
+console.log(todoList.todos);
+console.log('-------------UPDATE TOMATOES DESCRIPTION TODOS--------------');
+todoList.updateTodoDescription('TOMATOE CHONTO', 1)
 console.log(todoList.todos);
 console.log('-------------DELETE PINAPPLE TODOS-------------------');
 todoList.deleteTodo(2)
