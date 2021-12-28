@@ -35,6 +35,9 @@ var TodoList = /** @class */ (function () {
     TodoList.prototype.updateStatusTodo = function (status, index) {
         this.todos[index] = __assign(__assign({}, this.todos[index]), { status: status });
     };
+    TodoList.prototype.updateTodoDescription = function (description, index) {
+        this.todos[index] = __assign(__assign({}, this.todos[index]), { description: description });
+    };
     TodoList.prototype.deleteTodo = function (index) {
         this.todos.splice(index, 1);
     };
@@ -45,8 +48,11 @@ var todoList = new TodoList();
 console.log('------------ADD PASSIONFRUIT TODOS-------------------');
 todoList.addNewTodo('Passionfruit');
 console.log(todoList.todos);
-console.log('-------------UPDATE TOMATOES TODOS-------------------');
+console.log('-------------UPDATE TOMATOES STATE TODOS--------------');
 todoList.updateStatusTodo('completed', 1);
+console.log(todoList.todos);
+console.log('-------------UPDATE TOMATOES DESCRIPTION TODOS--------------');
+todoList.updateTodoDescription('TOMATOE CHONTO', 1);
 console.log(todoList.todos);
 console.log('-------------DELETE PINAPPLE TODOS-------------------');
 todoList.deleteTodo(2);
