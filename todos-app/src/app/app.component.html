@@ -2,10 +2,10 @@
 <input #input type="text">
 <button (click)="addTodo(input.value); input.value = ''">Add todo</button>
 <ul>
-  <li *ngFor="let todo of todos; index as index">
-    <input type="checkbox" [checked]="todo.status === 'completed'" (change)="updateTodoStatus(index, todo)"
+  <li *ngFor="let todo of todos$ | async">
+    <input type="checkbox" [checked]="todo.status === 'completed'" (change)="updateTodoStatus(todo.id, todo)"
       id="vehicle1" name="vehicle1" value="Bike">
-    <input type="text" (change)="updateTodoDescription(index, $event)" [value]="todo.description">
-    <button (click)="removeItem(index)">Remove</button>
+    <input type="text" (change)="updateTodoDescription(todo.id, $event)" [value]="todo.description">
+    <button (click)="removeItem(todo.id)">Remove</button>
   </li>
 </ul>

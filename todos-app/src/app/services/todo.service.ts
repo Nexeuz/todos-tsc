@@ -1,41 +1,31 @@
 import { Injectable } from '@angular/core';
 import { status, Todo } from '../interfaces/todo-interface';
+import { UUID } from 'angular2-uuid';
+import { Store } from '@ngrx/store';
+import { addTodo, changeDescriptionTodo, changeStatusTodo, deleteTodo } from '../redux/actions/todo/todo.actions';
+import { AppState } from '../redux/app.state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  todos: Todo[] = [
-    {
-      status: 'pending',
-      description: 'Bananas'
-    },
-    {
-      status: 'pending',
-      description: 'Tomatoes'
-    },
-    {
-      status: 'pending',
-      description: 'Pinapple'
-    }
-  ]
 
-  constructor() {
+  constructor(private store: Store<AppState>) {
   }
 
   addNewTodo(description: string): void {
-    this.todos.push({ description: description, status: 'pending' })
+    this.store.dispatch(addTodo({ todo: { description, status: 'pending', id: UUID.UUID() } }))
   }
 
-  updateStatusTodo(status: status, index: number): void {
-    this.todos[index] = { ...this.todos[index], status }
+  updateStatusTodo(status: status, index: string): void {
+    this.store.dispatch(changeStatusTodo({ id: index, status}))
   }
 
-  updateTodoDescription(description: string, index: number): void {
-    this.todos[index] = { ...this.todos[index], description }
+  updateTodoDescription(description: string, index: string): void {
+    this.store.dispatch(changeDescriptionTodo({ id: index, description}))
   }
 
-  deleteTodo(index: number): void {
-    this.todos.splice(index, 1);
+  deleteTodo(index: string): void {
+    this.store.dispatch(deleteTodo({ todoId: index}))
   }
 }
