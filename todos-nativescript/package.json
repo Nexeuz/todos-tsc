@@ -1,0 +1,39 @@
+{
+  "name": "todos-nativescript",
+  "main": "src/main.ts",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~12.0.0",
+    "@angular/common": "~12.0.0",
+    "@angular/compiler": "~12.0.0",
+    "@angular/core": "~12.0.0",
+    "@angular/forms": "~12.0.0",
+    "@angular/platform-browser": "~12.0.0",
+    "@angular/platform-browser-dynamic": "~12.0.0",
+    "@angular/router": "~12.0.0",
+    "@nativescript/angular": "~12.0.0",
+    "@nativescript/core": "~8.0.0",
+    "@nativescript/theme": "~3.0.0",
+    "@ngrx/store": "^12.4.0",
+    "@ngrx/store-devtools": "^12.0.0",
+    "@nstudio/nativescript-checkbox": "^2.0.4",
+    "angular2-uuid": "^1.1.1",
+    "nativescript-localstorage": "^2.0.2",
+    "nativescript-ngx-fonticon": "^7.0.0",
+    "nativescript-ui-listview": "^10.0.2",
+    "ngrx-store-localstorage": "^12.0.1",
+    "rxjs": "^6.5.3",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "12.0.0",
+    "@angular/compiler-cli": "~12.0.0",
+    "@nativescript/android": "8.0.0",
+    "@nativescript/ios": "8.0.0",
+    "@nativescript/types": "8.0.0",
+    "@nativescript/webpack": "beta",
+    "@ngtools/webpack": "~12.0.0",
+    "typescript": "~4.2.0"
+  }
+}

@@ -1,0 +1,28 @@
+<ActionBar class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <GridLayout columns="50, *">
+    <Label class="action-bar-title" text="Todos App" colSpan="2"></Label>
+  </GridLayout>
+</ActionBar>
+
+
+<FlexboxLayout flexDirection="column">
+  <GridLayout rows="50, 50" columns="2*" class="page__content">
+    <TextView #textView [formControl]="tvtext" row="0" col="0" hint="Write TODO">
+    </TextView>
+    <button (tap)="addTodo(textView)" row="1" col="0" text="Add todo" class="-primary -rounded-lg"></button>
+  </GridLayout>
+  <GridLayout height="80%" rows="*" columns="*" class="page__content">
+    <RadListView orientation="vertical" [items]="todos$ | async" (itemSelecting)="onItemTap($event)">
+      <ng-template let-todo="item" let-i="index" let-odd="odd" let-even="even">
+        <GridLayout rows="*" columns="40, *,*">
+          <CheckBox row="0" (tap)="toggleTodo($event, todo)" col="0" boxType="square" [id]="todo?.id"
+            [checked]="!!(todo?.status === 'completed')"></CheckBox>
+          <TextField #textEdit returnKeyType="done" (returnPress)="updateTodo(todo, textEdit.text)"  row="0" col="1" [text]="todo?.description"></TextField>
+          <button class="btn btn-outline button-delete" row="0" col="2" text="x" (tap)="deleteItem(todo.id)">
+          </button>
+        </GridLayout>
+      </ng-template>
+    </RadListView>
+  </GridLayout>
+</FlexboxLayout>
